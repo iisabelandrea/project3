@@ -1,3 +1,4 @@
+
 $.noConflict();
 (function($){
   $(document).ready(
@@ -18,7 +19,7 @@ $.noConflict();
         function(e) {
           alert('Failure!');
         }
-      ); 
+      );
 
       addCon = function (data,conID,conName) {
         for(var i = 0; i < 15; i++){
@@ -27,20 +28,20 @@ $.noConflict();
           if(conName==='Eastern'){
               $('#Eastern').append(
               '<li>'+
-              '  <p>'+city+' '+team+'</p>'+    
+              '  <p>'+city+' '+team+'</p>'+
               '</li>'
             );
           }
           if(conName==='Western'){
               $('#Western').append(
               '<li>'+
-              '  <p>'+city+' '+team+'</p>'+    
+              '  <p>'+city+' '+team+'</p>'+
               '</li>'
             );
           }
         }
 
-      }
+      };
 $('#abr-form').on('submit', function(event){
   $('#results').empty();
   var input = $('#teamName').val();
@@ -62,26 +63,26 @@ $('#abr-form').on('submit', function(event){
         function(e) {
           alert('Failure!');
         }
-      ); 
+      );
     abbreviation = function (data, conID){
       for(var i = 0; i < 15; i++) {
         teamName = data.playoffteamstandings.conference[conID].teamentry[i].team.Name;
       if(input === teamName ){
-        abbr = data.playoffteamstandings.conference[conID].teamentry[i].team.Abbreviation;  
+        abbr = data.playoffteamstandings.conference[conID].teamentry[i].team.Abbreviation;
       }
       }
       for(var i = 0; i < 15; i++) {
         teamCity = data.playoffteamstandings.conference[conID].teamentry[i].team.City;
       if(input === teamCity ){
-        abbr = data.playoffteamstandings.conference[conID].teamentry[i].team.Abbreviation;  
+        abbr = data.playoffteamstandings.conference[conID].teamentry[i].team.Abbreviation;
       }
-      }  
-    }
+      }
+    };
     appending = function (abbr) {
      $('#results').append(
         '<p>Team Abbreviation: ' + abbr + '</p>'
         );
-    }
+    };
     event.preventDefault();
 });
 $('#division-form').on('submit', function(event) {
@@ -110,13 +111,13 @@ $('#division-form').on('submit', function(event) {
           addDiv(data, 2, 'EasternSoutheast');
           addDiv(data, 3, 'WesternNorthwest');
           addDiv(data, 4, 'WesternPacific');
-          addDiv(data, 5, 'WesternSouthwest');          
+          addDiv(data, 5, 'WesternSouthwest');
          }
       ).fail(
         function(e) {
           alert('Failure!');
         }
-      ); 
+      );
         addDiv = function (data, divID, divName) {
         for(var i = 0; i < 5; i++){
           team = data.divisionteamstandings.division[divID].teamentry[i].team.Name;
@@ -124,50 +125,50 @@ $('#division-form').on('submit', function(event) {
         if(divName === "EasternAtlantic"){
               $('#EasternAtlantic').append(
               '<li>'+
-              '  <p>'+city+ ' '+team+'</p>'+    
+              '  <p>'+city+ ' '+team+'</p>'+
               '</li>'
-            );          
+            );
         }
         if(divName === "EasternCentral"){
               $('#EasternCentral').append(
               '<li>'+
-              '  <p>'+city+ ' '+team+'</p>'+    
+              '  <p>'+city+ ' '+team+'</p>'+
               '</li>'
-            );          
+            );
         }
         if(divName === "EasternSoutheast"){
               $('#EasternSoutheast').append(
               '<li>'+
-              '  <p>'+city+ ' '+team+'</p>'+    
+              '  <p>'+city+ ' '+team+'</p>'+
               '</li>'
-            );          
+            );
         }
         if(divName === "WesternNorthwest"){
               $('#WesternNorthwest').append(
               '<li>'+
-              '  <p>'+city+ ' '+team+'</p>'+    
+              '  <p>'+city+ ' '+team+'</p>'+
               '</li>'
-            );          
-        } 
+            );
+        }
         if(divName === "WesternPacific"){
               $('#WesternPacific').append(
               '<li>'+
-              '  <p>'+city+ ' '+team+'</p>'+    
+              '  <p>'+city+ ' '+team+'</p>'+
               '</li>'
-            );          
-        }   
+            );
+        }
         if(divName === "WesternSouthwest"){
               $('#WesternSouthwest').append(
               '<li>'+
-              '  <p>'+city+ ' '+team+'</p>'+    
+              '  <p>'+city+ ' '+team+'</p>'+
               '</li>'
-            );          
-        }         
+            );
         }
         }
+        };
         addHeaders = function (data){
           $('#division1').append(
-          'Eastern/Atlantic' 
+          'Eastern/Atlantic'
           );
           $('#division2').append(
           'Eastern/Central'
@@ -184,9 +185,9 @@ $('#division-form').on('submit', function(event) {
           $('#division6').append(
           'Western/Southwest'
           );
-        }
+        };
       event.preventDefault();
       });
     }
-  )
+  );
 })(jQuery);
